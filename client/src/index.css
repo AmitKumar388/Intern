@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 240 60% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 226 100% 97%;
+  --secondary-foreground: 240 40% 40%;
+  --accent: 240 40% 97%;
+  --accent-foreground: 240 40% 30%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  
+  /* Chat UI specific colors */
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 0 0% 0%;
+  --sidebar-primary: 240 60% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 40% 97%;
+  --sidebar-accent-foreground: 240 40% 30%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: 0 0% 90%;
+  
+  /* Light theme specific */
+  --neutral-background: 210 20% 98%;
+  --message-bubble-user: 226 100% 97%;
+  --message-bubble-other: 0 0% 100%;
+  --light-border: 0 0% 90%;
+  
+  /* Chart colors */
+  --chart-1: 240 60% 60%;
+  --chart-2: 270 60% 60%;
+  --chart-3: 300 60% 60%;
+  --chart-4: 330 60% 60%;
+  --chart-5: 0 60% 60%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 240 60% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 30% 20%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 30% 15%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  
+  /* Dark theme specific */
+  --neutral-background: 240 10% 10%;
+  --message-bubble-user: 240 30% 20%;
+  --message-bubble-other: 240 10% 15%;
+  --light-border: 240 3.7% 15.9%;
+  
+  /* Chart colors - darkened for dark mode */
+  --chart-1: 240 60% 50%;
+  --chart-2: 270 60% 50%;
+  --chart-3: 300 60% 50%;
+  --chart-4: 330 60% 50%;
+  --chart-5: 0 60% 50%;
+  
+  /* Sidebar dark mode */
+  --sidebar-background: 240 10% 7%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 240 60% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 30% 15%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .message-bubble-user {
+    @apply bg-[hsl(var(--message-bubble-user))];
+    border-top-right-radius: 0 !important;
+  }
+  
+  .message-bubble-other {
+    @apply bg-[hsl(var(--message-bubble-other))];
+    border-top-left-radius: 0 !important;
+  }
+  
+  .app-container {
+    @apply flex h-screen overflow-hidden;
+    min-width: 320px;
+  }
+  
+  .neutral-bg {
+    @apply bg-[hsl(var(--neutral-background))];
+  }
+  
+  .light-border {
+    @apply border-[hsl(var(--light-border))];
+  }
+  
+  .sidebar {
+    @apply w-80 h-full bg-white dark:bg-[hsl(var(--sidebar-background))] border-r light-border flex-shrink-0 flex flex-col;
+  }
+  
+  .mobile-sidebar {
+    @apply fixed z-20 transition-transform duration-300 ease-in-out;
+  }
+  
+  .mobile-sidebar-closed {
+    @apply -translate-x-full md:translate-x-0;
+  }
+  
+  .mobile-ai-panel {
+    @apply fixed right-0 z-20 transition-transform duration-300 ease-in-out;
+  }
+  
+  .mobile-ai-panel-closed {
+    @apply translate-x-full md:translate-x-0;
+  }
+}
